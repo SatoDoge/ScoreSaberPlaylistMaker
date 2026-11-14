@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>設定 - ScoreSaber Playlist Maker</title>
+  </head>
+  <body>
+    <main class="container py-4 d-flex flex-column gap-3">
+      <h1 class="h3 mb-0">設定</h1>
+
+      <section class="card">
+        <div class="card-body">
+          <h2 class="h5 card-title">ScoreSaber ID</h2>
+          <p class="card-text text-secondary">自分のIDを保存します。IDそのものか、プロフィールページのURLを入力できます。</p>
+          <label class="form-label" for="playerId">ID</label>
+          <input id="playerId" class="form-control" type="text" inputmode="numeric" autocomplete="off" placeholder="7656119... または https://scoresaber.com/u/..." />
+          <button id="saveId" class="btn btn-primary mt-3" type="button">IDを保存</button>
+          <p id="idStatus" class="status mt-3 mb-0 text-secondary" role="status">読み込み中</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-body">
+          <h2 class="h5 card-title">キャッシュ</h2>
+          <p class="card-text text-secondary">取得済みのスコアを削除します。ID、プレイリスト画像、保存先フォルダは残ります。</p>
+          <button id="clearCache" class="btn btn-outline-danger" type="button">キャッシュを削除</button>
+          <p id="cacheStatus" class="status mt-3 mb-0 text-secondary" role="status"></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-body">
+          <h2 class="h5 card-title">プレイリスト画像</h2>
+          <p class="card-text text-secondary">作成するプレイリストに付ける画像です。</p>
+          <div class="form-check">
+            <input id="imageNone" class="form-check-input" type="radio" name="imageMode" value="none" checked />
+            <label class="form-check-label" for="imageNone">設定しない</label>
+          </div>
+          <div class="form-check">
+            <input id="imageAuthor" class="form-check-input" type="radio" name="imageMode" value="author" />
+            <label class="form-check-label" for="imageAuthor">作ったユーザーのアイコン</label>
+          </div>
+          <div id="authorFields" class="author-fields" hidden>
+            <p class="text-secondary small mb-0">開いているプレイヤーのページで作成したプレイリストに、そのプレイヤーのアイコンを使います。</p>
+          </div>
+          <div class="form-check">
+            <input id="imageCustom" class="form-check-input" type="radio" name="imageMode" value="custom" />
+            <label class="form-check-label" for="imageCustom">独自の画像</label>
+          </div>
+          <div id="customImageFields" class="mt-2" hidden>
+            <label class="form-label" for="customImage">画像ファイル</label>
+            <input id="customImage" class="form-control" type="file" accept="image/*" />
+            <p class="text-secondary small mt-2 mb-2">長辺512pxのJPEGにして保存します。</p>
+            <img id="imagePreview" class="image-preview" alt="プレイリスト画像のプレビュー" hidden />
+          </div>
+          <button id="saveImage" class="btn btn-primary mt-3" type="button">画像設定を保存</button>
+          <p id="imageStatus" class="status mt-3 mb-0 text-secondary" role="status"></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-body">
+          <h2 class="h5 card-title">プレイリストの保存方法</h2>
+          <p class="card-text text-secondary">作成ボタンで書き出す場所です。フォルダを選ぶと、その操作ハンドラーを拡張機能に保存します。</p>
+          <div class="form-check">
+            <input id="saveDownload" class="form-check-input" type="radio" name="saveMode" value="download" checked />
+            <label class="form-check-label" for="saveDownload">ダウンロードする</label>
+          </div>
+          <div class="form-check">
+            <input id="saveDirectory" class="form-check-input" type="radio" name="saveMode" value="directory" />
+            <label class="form-check-label" for="saveDirectory">指定したフォルダに保存</label>
+          </div>
+          <div id="directoryFields" class="mt-2" hidden>
+            <p id="directoryName" class="mb-2">保存先: 未設定</p>
+            <button id="pickDirectory" class="btn btn-outline-secondary" type="button">フォルダを選択</button>
+          </div>
+          <button id="saveMethod" class="btn btn-primary mt-3" type="button">保存方法を保存</button>
+          <p id="saveStatus" class="status mt-3 mb-0 text-secondary" role="status"></p>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ScoreSaber Playlist Maker",
+  "description": "ScoreSaberで特定のユーザーのプレイした譜面からフィルターを用いてプレイリストを作成することができます",
+  "version": "3.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_ui": {
+    "page": "src/options/index.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "ScoreSaber Playlist Maker",
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://scoresaber.com/*"],
+      "js": ["src/content/index.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage"],
+  "host_permissions": ["https://scoresaber.com/*", "https://cdn.scoresaber.com/*"]
+}

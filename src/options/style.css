@@ -1,0 +1,26 @@
+body {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 640px;
+}
+
+.status {
+  white-space: pre-line;
+}
+
+.author-fields,
+#customImageFields,
+#directoryFields {
+  margin-left: 1.5rem;
+}
+
+.image-preview {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #000;
+}
